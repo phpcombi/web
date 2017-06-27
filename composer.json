@@ -1,0 +1,28 @@
+{
+    "name": "combi/web",
+    "description": "combi web-kits",
+    "keywords": ["framework", "web", "libs"],
+    "license": "MPL2.0",
+    "authors": [
+        {
+            "name": "Andares Merigold",
+            "email": "andares@outlook.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "psr/http-message": "^1.0",
+        "combi/core": "^0.1"
+    },
+    "require-dev": {
+        "nette/tester": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {"Combi\\": "src/classes/"},
+        "files": [
+            "src/bootstrap.php"
+        ]
+    },
+    "bin": ["chord"],
+    "minimum-stability": "stable"
+}
