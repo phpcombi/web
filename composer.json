@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "psr/http-message": "^1.0",
+        "kevinlebrun/colors.php": "^1.0",
         "combi/core": "^0.1"
     },
     "require-dev": {
@@ -23,6 +23,5 @@
             "src/bootstrap.php"
         ]
     },
-    "bin": ["chord"],
     "minimum-stability": "stable"
 }
