@@ -12,13 +12,13 @@
     "require": {
         "php": ">=7.1.0",
         "kevinlebrun/colors.php": "^1.0",
-        "combi/core": "^0.1"
+        "combi/core": "dev-master"
     },
     "require-dev": {
         "nette/tester": "dev-master"
     },
     "autoload": {
-        "psr-4": {"Combi\\": "src/classes/"},
+        "psr-4": {"Combi\\Web\\": "src/classes/"},
         "files": [
             "src/bootstrap.php"
         ]
