@@ -1,6 +1,8 @@
 composer.phar
 /vendor/
+/tests/instance/logs
+/tests/instance/tmp
 /tests/logs/
 /tests/tmp/
-/tests/Playground.php
+/tests/playground.php
 composer.lock

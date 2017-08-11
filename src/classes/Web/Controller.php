@@ -8,5 +8,9 @@ use Combi\{
     Core as core
 };
 
-core::register(Package::instance(__DIR__),
-    'helpers');
+use Combi\Web as inner;
+
+abstract class Controller
+{
+
+}

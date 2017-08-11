@@ -11,14 +11,18 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "kevinlebrun/colors.php": "^1.0",
+        "psr/http-message": "^1.0",
+        "fig/http-message-util": "^1.1",
+        "twig/twig": "^2.4",
+        "slim/php-view": "^2.2",
+        "nikic/fast-route": "^1.2",
         "combi/core": "dev-master"
     },
     "require-dev": {
         "nette/tester": "dev-master"
     },
     "autoload": {
-        "psr-4": {"Combi\\Web\\": "src/classes/"},
+        "psr-4": {"Combi\\": "src/classes/"},
         "files": [
             "src/bootstrap.php"
         ]

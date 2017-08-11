@@ -1,6 +1,6 @@
 <?php
 
-namespace Combi\Web;
+namespace App;
 
 use Combi\{
     Helper as helper,
@@ -9,4 +9,4 @@ use Combi\{
 };
 
 core::register(Package::instance(__DIR__),
-    'helpers');
+    /*'dependencies', 'hooks',*/ 'helpers');
