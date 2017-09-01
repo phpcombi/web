@@ -63,7 +63,7 @@ class Result extends core\Meta\Struct
             return $this->response->withJson($this->toArray(), $this->code ?: null);
         }
         $view = $this->view ?: $action->getView();
-        $response = $this->response->withView($view,$this->template, $this->toArray());
+        $response = $this->response->withView($this->template, $this->toArray(), $view);
         return $this->code ? $response->withStatus($this->code) : $response;
     }
 

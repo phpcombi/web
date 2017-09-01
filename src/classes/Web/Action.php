@@ -130,7 +130,7 @@ class Action extends core\Action
         }
     }
 
-    public function getView(): View {
+    public function getView(): ?View {
         return $this->p()->view;
     }
 

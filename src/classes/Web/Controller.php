@@ -60,7 +60,9 @@ abstract class Controller
         if ($result_class && class_exists($result_class)) {
             $arguments[] = new $result_class($this->action->response);
         } else {
-            $arguments[] = $this->action->response;
+            $view = $this->action->getView();
+            $arguments[] = $view
+                ? $this->action->response->setView($view) : $this->action->response;
         }
         // TODO: protocol对所有返回情况都要做处理
 

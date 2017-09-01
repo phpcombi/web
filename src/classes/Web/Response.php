@@ -18,12 +18,23 @@ class Response extends Http\Response
 
     /**
      *
+     * @var View
+     */
+    protected $view = null;
+
+    /**
+     *
      * @param string $data
      * @return static
      */
     public function __invoke(string $data): self
     {
         return $this->write($data);
+    }
+
+    public function setView(View $view): self {
+        $this->view = $view;
+        return $this;
     }
 
     /**
@@ -83,8 +94,12 @@ class Response extends Http\Response
         return $response;
     }
 
-    public function withView(View $view, string $template, array $data): self {
-        $body     = new Http\Stream(fopen('php://temp', 'r+'));
+    public function withView(string $template, array $data, ?View $view = null): self {
+        $body   = new Http\Stream(fopen('php://temp', 'r+'));
+        !$view && $view = $this->view;
+        if (!$view) {
+            throw new \RuntimeException("Try to response a view without View Render.");
+        }
         return $this->withBody($body)
             ->write($view->render($template, $data))
             ->withHeader('Content-Type', $view->getContentType());
