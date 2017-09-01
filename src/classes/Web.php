@@ -4,15 +4,16 @@ namespace Combi;
 
 use Combi\{
     Helper as helper,
-    Abort as abort
+    Abort as abort,
+    Core as core
 };
 
 class Web
 {
     use Core\Traits\StaticAgent;
 
-    public static function instance(): Core\Package {
-        return Core\Package::instance('web');
+    public static function instance(): Web\Package {
+        return Web\Package::instance();
     }
 
 }

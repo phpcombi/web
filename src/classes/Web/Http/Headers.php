@@ -13,6 +13,8 @@ use Combi\Web as inner;
 
 class Headers extends core\Meta\Collection
 {
+    use core\Meta\Extensions\Overloaded;
+
     public function set($key, $value): self {
         return parent::set($this->transformKey($key),
             is_array($value) ? $value : [$value]);

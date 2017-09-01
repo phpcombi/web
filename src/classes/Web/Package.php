@@ -17,13 +17,11 @@ class Package extends \Combi\Package
 {
     protected static $_pid = 'web';
 
-    public function run(?core\Action $service = null) {
-        !$service && $service = $this->getDefaultService();
-        $this->service = $service;
-        $service();
+    public function createAction(...$arguments): Action {
+        return new Action(...$arguments);
     }
 
-    private function getDefaultService(): Service {
-        return new Service();
+    public function createRouter(): Router {
+        return new Router();
     }
 }

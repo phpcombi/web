@@ -6,12 +6,18 @@ use Combi\{
     Core as core
 };
 
-class Web
+class App
 {
     use core\Traits\StaticAgent;
 
-    public static function instance(): core\Package {
-        return core\Package::instance('app');
+    public static function runByCgi() {
+        $package = self::instance();
+        $package->action = $action = core::rt()->web->createAction();
+        $action(App::router());
+    }
+
+    public static function instance(): App\Package {
+        return App\Package::instance();
     }
 
 }

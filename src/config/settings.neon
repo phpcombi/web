@@ -1,0 +1,2 @@
+http:
+    response_chunk_size:    8192

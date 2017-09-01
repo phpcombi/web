@@ -39,13 +39,13 @@ abstract class Message implements MessageInterface
      */
     protected $protocol_version;
 
-    public function __construct(?StreamInterface $body = null,
-        ?Headers $headers = null, ?string $protocol_version = null)
+    public function __construct(StreamInterface $body, Headers $headers,
+        string $protocol_version = '1.1')
     {
-        $this->body     = $body ?: new Stream(fopen('php://temp', 'r+'));
-        $this->headers  = $headers ?: inner::get('headers');
-        $this->protocol_version  = $protocol_version
-            ?: inner::get('environment')->getProtocolVersion();
+        $this->body     = $body;
+        $this->headers  = $headers;
+
+        $this->protocol_version  = $protocol_version;
     }
 
     public function getProtocolVersion(): string
@@ -63,9 +63,7 @@ abstract class Message implements MessageInterface
     public function withProtocolVersion($version): self
     {
         if (!isset(self::HTTP_PROTOCOL_VERSION_ALLOW[$version])) {
-            throw abort::invalidArgument('Invalid HTTP version "%error%". Must be one of: %allow%')
-                ->set('error', $version)
-                ->set('allow', implode(',', array_keys(self::$HTTP_PROTOCOL_VERSION_ALLOW)));
+            throw new \InvalidArgumentException("Invalid HTTP version $version");
         }
         $clone = clone $this;
         $clone->protocol_version = $version;
@@ -121,7 +119,7 @@ abstract class Message implements MessageInterface
      */
     public function getHeaderLine($name): string
     {
-        return implode(',', $this->headers->get($name) ?: []);
+        return implode(',', $this->getHeader($name));
     }
 
     /**

@@ -14,15 +14,13 @@ use Combi\Web as inner;
 class Environment extends core\Meta\Collection
     implements core\Interfaces\Confirmable
 {
+    use core\Meta\Extensions\Overloaded;
+
     private $_protocol_version = '1.1';
 
-    public function set($key, $value): self {
-        return parent::set(strtolower($key), $value);
-    }
-
     public function confirm(): self {
-        if ($this->has('server_protocol')) {
-            $value = $this->get('server_protocol');
+        if ($this->has('SERVER_PROTOCOL')) {
+            $value = $this->get('SERVER_PROTOCOL');
             $this->setProtocolVersion(substr($value, strpos($value, '/') + 1));
         }
         return $this;

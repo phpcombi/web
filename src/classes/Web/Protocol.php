@@ -8,5 +8,8 @@ use Combi\{
     Core as core
 };
 
-core::register(Package::instance(__DIR__),
-    'helpers', 'hooks');
+use Combi\Web as inner;
+
+class Protocol
+{
+}
