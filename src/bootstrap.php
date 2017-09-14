@@ -5,8 +5,8 @@ namespace Combi\Web;
 use Combi\{
     Helper as helper,
     Abort as abort,
-    Core as core
+    Runtime as rt
 };
 
-core::register(Package::instance(__DIR__),
+rt::register(Package::instance(__DIR__),
     'helpers', 'hooks');

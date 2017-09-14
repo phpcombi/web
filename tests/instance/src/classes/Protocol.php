@@ -8,3 +8,6 @@ use Combi\{
     Runtime as rt
 };
 
+class Protocol extends \Combi\Web\Protocol
+{
+}

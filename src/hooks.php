@@ -5,11 +5,26 @@ namespace Combi\Web;
 use Combi\{
     Helper as helper,
     Abort as abort,
-    Core as core
+    Core,
+    Runtime as rt
 };
 
+rt::core()->hook()->attach(\Combi\HOOK_ACTION_BROKEN,
+    function(Core\Action $action, \Throwable $e)
+{
+    $error_info = [
+        'error' => $e->getCode(),
+        'msg'   => $e->getMessage(),
+    ];
+    $response = $action->response->withJson($error_info,
+        \Combi\Web\Response::STATUS_INTERNAL_SERVER_ERROR);
+    $action->respond($response);
+    helper::log($e);
+    die(1);
+});
+
 // Request 类添加 body parser
-core::hook()->attach(\Combi\HOOK_READY, function() {
+rt::core()->hook()->attach(\Combi\HOOK_READY, function() {
 
     Request::registerBodyParser(function (string $body): ?arrays {
         $result = json_decode($body, true);

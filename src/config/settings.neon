@@ -1,2 +1,5 @@
 http:
     response_chunk_size:    8192
+
+request_log:
+    enable: true

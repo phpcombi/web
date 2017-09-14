@@ -8,8 +8,8 @@ time:
 # 调试配置
 debug:
     action_error:
-        show:   false
-        halt:   false
+        show:   true
+        halt:   true
 prod < debug:
     action_error:
         show:   false
